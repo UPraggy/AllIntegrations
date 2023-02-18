@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 var x = require('x-ray')();
 
-/*app.set('view engine', 'pug');
-app.set('views', __dirname);*/
+app.set('view engine', 'pug');
+app.set('views', __dirname);
 
 
 //LiturgiaDiaria
