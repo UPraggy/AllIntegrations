@@ -7,7 +7,7 @@ app.set('views', __dirname);
 
 
 //LiturgiaDiaria
-app.get('/', (req, res) => {
+app.get('/LiturgiaDiaria', (req, res) => {
 	x('https://liturgia.cancaonova.com/pb/',
 	{ 
     corLiturgica : ".cor-liturgica",
