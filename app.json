@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "ReactApp",
+    "slug": "AgoraVai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./components/statics/logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      //"image": "./components/statics/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./components/statics/logo.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.anonymous.AgoraVai"
+    },
+    "web": {
+      "favicon": "./components/statics/logo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ef3019e6-bf84-4e3d-b01f-b0528e9dc9ce"
+      }
+    }
+  }
+}
