@@ -5,7 +5,7 @@ var x = require('x-ray')();
 app.set('view engine', 'pug');
 app.set('views', __dirname);
 
-app.get('/LiturgiaDiaria', (req, res) => {
+app.get('/', (req, res) => {
 	res.send("nada Aqui")
 })
 //LiturgiaDiaria
