@@ -5,11 +5,9 @@ var x = require('x-ray')();
 app.set('view engine', 'pug');
 app.set('views', __dirname);
 
-app.get('/', (req, res) => {
-	res.send("nada Aqui")
-})
+
 //LiturgiaDiaria
-app.get('/LiturgiaDiaria', (req, res) => {
+app.get('/', (req, res) => {
 	x('https://liturgia.cancaonova.com/pb/',
 	{ 
     corLiturgica : ".cor-liturgica",
@@ -23,6 +21,7 @@ app.get('/LiturgiaDiaria', (req, res) => {
       result[value] = result[value].replace(/[\t\r]/g,"")
 
     })
+    
     if (result['evangelho'].indexOf('breve') != -1){
       result['evangelho'] = result['evangelho'].split("— Glória a vós, Senhor.")
       result['evangelho'] = result['evangelho'][0]
@@ -39,9 +38,9 @@ app.get('/LiturgiaDiaria', (req, res) => {
 
 });
 
-const port = process.env.PORT || 3000
 
-app.listen(port, () => console.log('server started'));
+
+app.listen(3000, () => console.log('server started'));
 
 
 
@@ -86,8 +85,16 @@ function formatSalmo(word){
 
 function formatEvangelho(word){
   let title = word.split("\n")[0]
-	word = word.split("Glória a vós, Senhor.\n \n");
+	word = word.split("Glória a vós, Senhor.");
 	word = word.slice(1).join("")
+  while (true){
+    if ("\n" === word.slice(0,1)){
+      word = word.slice(1)
+    }else{
+      break;
+    }
+  }
+  /*word = word.slice(1)*/
   word = word.split("Palavra da Salvação")[0]
   word = word.slice(0,-3)
   word = [title,word]
