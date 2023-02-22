@@ -39,9 +39,8 @@ app.get('/LiturgiaDiaria', (req, res) => {
 });
 
 
-const port = process.env.PORT || 3000
 
-app.listen(port, () => console.log('server started'));
+app.listen(3000, () => console.log('server started'));
 
 
 
@@ -87,7 +86,11 @@ function formatSalmo(word){
 function formatEvangelho(word){
   let title = word.split("\n")[0]
 	word = word.split("Glória a vós, Senhor.");
+  if (word.slice(1).length < 5){
+    word = word.join("").split("Glória a vós, Senhor!");
+  }
 	word = word.slice(1).join("")
+  
   while (true){
     if ("\n" === word.slice(0,1)){
       word = word.slice(1)
