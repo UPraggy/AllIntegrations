@@ -59,7 +59,7 @@ async function getLiturgy(){
 } 
 
 
-setInterval(()=>getLiturgy(),600000)
+setInterval(()=>getLiturgy(),60000)
 
 
 
