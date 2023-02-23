@@ -6,9 +6,34 @@ app.set('view engine', 'pug');
 app.set('views', __dirname);
 
 
-//
-app.get('/LiturgiaDiaria', (req, res) => {
-	x('https://liturgia.cancaonova.com/pb/',
+//LiturgiaDiaria
+app.get('/', (req, res) => {
+
+    setTimeGet(req,res);
+
+
+});
+
+const port = process.env.PORT || 3000
+
+app.listen(port, () => console.log('server started'));
+
+
+function setTimeGet(req,res){
+  for (let x=0; x<2;x++) {
+    if (x!=0){
+      setTimeout(()=>getLiturgy(req,res), 1500);
+      return;
+    }else{
+      getLiturgy(req,res);
+      return;
+    }
+  }
+}
+
+async function getLiturgy(req,res){
+  
+   x('https://liturgia.cancaonova.com/pb/',
 	{ 
     corLiturgica : ".cor-liturgica",
     titulo : ".entry-title",
@@ -33,33 +58,12 @@ app.get('/LiturgiaDiaria', (req, res) => {
     result.evangelho  = formatEvangelho(result.evangelho)
     result.corLiturgica = [result.corLiturgica.split(":")[1],result.titulo.split("|")[0]]
 		res.send(result)
-	});
-  
+	})
 
-});
-
-
-const port = process.env.PORT || 3000
-
-app.listen(port, () => console.log('server started'));
-
-
-
-
-async function getLiturgy(){
-  x('https://liturgia.cancaonova.com/pb/',
-	{ 
-    corLiturgica : ".cor-liturgica",
-    titulo : ".entry-title",
-		primeiraLeitura: "#liturgia-1",
-    salmo: "#liturgia-2",
-    evangelho: "#liturgia-4",
-	}
-	)
 } 
 
 
-setInterval(()=>getLiturgy(),60000)
+
 
 
 
