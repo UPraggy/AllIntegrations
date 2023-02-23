@@ -6,10 +6,17 @@ app.set('view engine', 'pug');
 app.set('views', __dirname);
 
 
-//LiturgiaDiaria
-app.get('/', (req, res) => {
+//
+app.get('/LiturgiaDiaria', (req, res) => {
 
     setTimeGet(req,res);
+
+
+});
+
+app.get('/', (req, res) => {
+
+    res.send({"NADA AQUI"})
 
 
 });
