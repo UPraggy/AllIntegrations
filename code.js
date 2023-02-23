@@ -16,7 +16,7 @@ app.get('/LiturgiaDiaria', (req, res) => {
 
 app.get('/', (req, res) => {
 
-    res.send({"NADA AQUI"})
+    res.send("NADA AQUI")
 
 
 });
