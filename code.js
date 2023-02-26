@@ -53,11 +53,10 @@ async function getLiturgy(req,res){
       result[value] = result[value].replace(/[\t\r]/g,"")
 
     })
-    
     if (result['evangelho'].indexOf('breve') != -1){
-      result['evangelho'] = result['evangelho'].split("— Glória a vós, Senhor.")
-      result['evangelho'] = result['evangelho'][0]
-      result['evangelho'] += '— Glória a vós, Senhor.'
+      let pos = result['evangelho'].indexOf('breve')
+      result['evangelho'] = result['evangelho'].slice(2,pos)
+      
     }
     result = formatBarraN(result);
     result.primeiraLeitura = formatPrimeiraLeitura(result.primeiraLeitura)
@@ -97,11 +96,9 @@ function formatSalmo(word){
 
 function formatEvangelho(word){
   let title = word.split("\n")[0]
-	word = word.split("Glória a vós, Senhor.");
-  if (word.slice(1).length < 5){
-    word = word.join("").split("Glória a vós, Senhor!");
-  }
-	word = word.slice(1).join("")
+	word = word.split("Glória a vós, Senhor");
+
+	word = word.slice(1).join("").slice(2)
   
   while (true){
     if ("\n" === word.slice(0,1)){
